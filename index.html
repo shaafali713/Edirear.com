@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edirear - Watch, Upload, and Share Videos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">Edirear</div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search videos..." id="search-input">
+      <button id="search-button">Search</button>
+    </div>
+    <div class="user-options">
+      <button id="dark-mode-toggle">🌙 Dark Mode</button>
+      <button id="login-button">Login with Facebook</button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Home Page -->
+    <section id="home-page" class="page active">
+      <h2>Welcome to Edirear</h2>
+      <div class="video-grid" id="video-grid">
+        <!-- Videos will be dynamically added here -->
+      </div>
+    </section>
+
+    <!-- Shorts Page -->
+    <section id="shorts-page" class="page">
+      <h2>Shorts</h2>
+      <div class="shorts-container" id="shorts-container">
+        <!-- Shorts will be dynamically added here -->
+      </div>
+    </section>
+
+    <!-- Upload Page -->
+    <section id="upload-page" class="page">
+      <h2>Upload Your Video</h2>
+      <form id="upload-form">
+        <input type="file" id="video-file" accept="video/*" required>
+        <input type="text" id="video-title" placeholder="Video Title" required>
+        <textarea id="video-description" placeholder="Video Description" required></textarea>
+        <button type="submit">Upload Video</button>
+      </form>
+    </section>
+
+    <!-- Subscription Page -->
+    <section id="subscription-page" class="page">
+      <h2>Your Subscriptions</h2>
+      <div class="subscription-list" id="subscription-list">
+        <!-- Subscribed channels will be dynamically added here -->
+      </div>
+    </section>
+
+    <!-- You Page -->
+    <section id="you-page" class="page">
+      <h2>Your Activity</h2>
+      <div class="activity-section">
+        <h3>Watch History</h3>
+        <div class="watch-history" id="watch-history">
+          <!-- Watch history will be dynamically added here -->
+        </div>
+        <h3>Liked Videos</h3>
+        <div class="liked-videos" id="liked-videos">
+          <!-- Liked videos will be dynamically added here -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <button class="nav-button" data-page="home-page">🏠 Home</button>
+    <button class="nav-button" data-page="shorts-page">🎥 Shorts</button>
+    <button class="nav-button" data-page="upload-page">📤 Upload</button>
+    <button class="nav-button" data-page="subscription-page">📌 Subscriptions</button>
+    <button class="nav-button" data-page="you-page">👤 You</button>
+  </div>
+
+  <!-- Video Player Modal -->
+  <div id="video-player-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <iframe id="video-player" width="100%" height="400" src="" frameborder="0" allowfullscreen></iframe>
+      <div class="video-details">
+        <h3 id="video-player-title"></h3>
+        <p id="video-player-description"></p>
+        <button id="like-button">❤️ Like</button>
+        <button id="subscribe-button">📌 Subscribe</button>
+        <div id="analytics-container"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Facebook SDK -->
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: "655220533583653", // Your Facebook App ID
+        cookie: true,
+        xfbml: true,
+        version: "v12.0", // Facebook API version
+      });
+
+      FB.AppEvents.logPageView();
+
+      // Check login status
+      FB.getLoginStatus(function (response) {
+        if (response.status === "connected") {
+          console.log("User is logged in with Facebook");
+        } else {
+          console.log("User is not logged in with Facebook");
+        }
+      });
+    };
+
+    (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    })(document, "script", "facebook-jssdk");
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
